@@ -14,13 +14,15 @@ const sendDirectMessage = function () {
       const tweetId = data.statuses[0].id_str
 
       Twitter.post('direct_messages/events/new', {
-        'type': 'message_create',
-        'message_create': {
-          'target': {
-            'recipient_id': '390602997'
-          },
-          'message_data': {
-            'text': 'Tweet with ID: ' + tweetId,
+        event: {
+          'type': 'message_create',
+          'message_create': {
+            'target': {
+              'recipient_id': '390602997'
+            },
+            'message_data': {
+              'text': 'Tweet with ID: ' + tweetId,
+            }
           }
         }
       }, function (err, response) {
