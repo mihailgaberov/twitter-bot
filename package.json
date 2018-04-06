@@ -1,0 +1,29 @@
+{
+  "name": "herrklinkerhofen",
+  "version": "0.1.0",
+  "description": "A twitter bot that serves as notifier for the recent #js #javascript #nodejs #reactjs news.",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mihailgaberov/twitter-bot.git"
+  },
+  "keywords": [
+    "twitter",
+    "bot",
+    "javascript",
+    "nodejs"
+  ],
+  "author": "Mihail Gaberov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mihailgaberov/twitter-bot/issues"
+  },
+  "homepage": "https://github.com/mihailgaberov/twitter-bot#readme",
+  "devDependencies": {
+    "dotenv": "^5.0.1",
+    "twit": "^2.2.9"
+  }
+}
