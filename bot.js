@@ -12,6 +12,14 @@ const sendDirectMessage = function () {
   Twitter.get('search/tweets', params, function (err, data) {
     if (!err) {
       const tweetId = data.statuses[0].id_str
+      const createdAt = data.statuses[0].created_at
+      const source = data.statuses[0].source
+      const tweetText = data.statuses[0].text
+      const userThatTweeted = data.statuses[0].user.name
+      const userDescription = data.statuses[0].user.description
+      const userFollowersCount = data.statuses[0].user.followers_count
+      const userFriendsCount = data.statuses[0].user.friends_count
+      const userStatusesCount = data.statuses[0].user.statuses_count
 
       Twitter.post('direct_messages/events/new', {
         event: {
@@ -21,7 +29,15 @@ const sendDirectMessage = function () {
               'recipient_id': '390602997'
             },
             'message_data': {
-              'text': 'Tweet with ID: ' + tweetId,
+              'text': `Tweet ID: ${tweetId}
+              Created at: ${createdAt}
+              Source: ${source}
+              Content: ${tweetText}
+              By: ${userThatTweeted}
+              With desc: ${userDescription}
+              With ${userFollowersCount} followers
+              And ${userFriendsCount} friends
+              Tweeted so far ${userStatusesCount} statuses.`,
             }
           }
         }
@@ -40,5 +56,3 @@ const sendDirectMessage = function () {
 }
 
 sendDirectMessage()
-// every 60 minutes
-setInterval(sendDirectMessage, 3600000)
