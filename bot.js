@@ -1,7 +1,7 @@
-const twit = require('twit')
+const Twit = require('twit')
 const config = require('./config')
 
-const Twitter = new twit(config)
+const Twitter = new Twit(config)
 
 const sendDirectMessage = function () {
   const params = {
