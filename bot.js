@@ -11,19 +11,18 @@ const sendDirectMessage = function () {
   }
   Twitter.get('search/tweets', params, function (err, data) {
     if (!err) {
-      let content = `=========== Daily report (${data.statuses.length})=================`
+      let content = `=========== Daily report (${data.statuses.length})=================\n`
 
       data.statuses.forEach((status) => {
-        content += `--------------- Tweet ID: ${status.id_str} ---------------              
-              Created at: ${status.created_at}
-              Source: ${status.source}
-              Status text: ${status.text}
-              By: ${status.user.name}
-              With desc: ${status.user.description}
-              With: ${status.user.followers_count} followers
-              And: ${status.user.friends_count} friends
-              Tweeted so far: ${status.user.statuses_count} statuses.\`,
-`
+        content += `--------------- New Tweet ---------------\n             
+              Created at: ${status.created_at} \n
+              Source: ${status.source} \n
+              Status text: ${status.text} \n
+              By: ${status.user.name} \n
+              With desc: ${status.user.description} \n
+              With: ${status.user.followers_count} followers \n
+              And: ${status.user.friends_count} friends \n
+              Tweeted so far: ${status.user.statuses_count} statuses.\n\n`
       })
 
       Twitter.post('direct_messages/events/new', {
