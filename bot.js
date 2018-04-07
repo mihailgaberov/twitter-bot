@@ -14,8 +14,7 @@ const sendDirectMessage = function () {
       let content = `== Daily report (${data.statuses.length} tweets) ==\n`
 
       data.statuses.forEach((status) => {
-        content += `---
-         New Tweet:\n             
+        content += `--- New Tweet:\n             
               Created at: ${status.created_at} \n
               Source: ${status.source} \n
               Status text: ${status.text} \n
