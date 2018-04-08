@@ -25,26 +25,41 @@ const sendDirectMessage = function () {
               Tweeted so far: ${status.user.statuses_count} statuses.\n\n`
       })
 
-      Twitter.post('direct_messages/events/new', {
-        event: {
-          'type': 'message_create',
-          'message_create': {
-            'target': {
-              'recipient_id': '390602997'
-            },
-            'message_data': {
-              'text': content,
-            }
-          }
-        }
+      Twitter.get('followers/ids', {
+        user_id: 982290988562608129,
+        screen_name: 'herrklinkerhof3'
       }, function (err, response) {
-        if (response) {
-          console.log('Message sent. Response: ', response)
-        }
         if (err) {
-          console.log('Something went wrong while sending message. Error: ', err)
+          console.log('Something went wrong while getting followers. Error: ', err)
+        }
+
+        if (response) {
+          response.ids.forEach((id) => {
+            Twitter.post('direct_messages/events/new', {
+              event: {
+                'type': 'message_create',
+                'message_create': {
+                  'target': {
+                    'recipient_id': id
+                  },
+                  'message_data': {
+                    'text': content,
+                  }
+                }
+              }
+            }, function (err, response) {
+              if (response) {
+                console.log('Message sent. Response: ', response)
+              }
+              if (err) {
+                console.log('Something went wrong while sending message. Error: ', err)
+              }
+            })
+          })
         }
       })
+
+
     } else {
       console.log('Something went wrong while searching.')
     }
