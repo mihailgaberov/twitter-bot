@@ -1,5 +1,6 @@
 const Twit = require('twit')
 const config = require('./config')
+const helpers = require('./helpers')
 
 const Twitter = new Twit(config)
 
@@ -11,18 +12,12 @@ const sendDirectMessage = function () {
   }
   Twitter.get('search/tweets', params, function (err, data) {
     if (!err) {
-      let content = `== Daily report (${data.statuses.length} tweets) ==\n`
+      let content = `== New report (from ${helpers.getCurrenTime()} (${data.statuses.length} tweets)) ==\n`
 
       data.statuses.forEach((status) => {
-        content += `--- New Tweet:\n             
-              Created at: ${status.created_at} \n
-              Source: ${status.source} \n
+        content += `--- New Tweet:\n
               Status text: ${status.text} \n
-              By: ${status.user.name} \n
-              With desc: ${status.user.description} \n
-              With: ${status.user.followers_count} followers \n
-              And: ${status.user.friends_count} friends \n
-              Tweeted so far: ${status.user.statuses_count} statuses.\n\n`
+              By: ${status.user.name}\n\n`
       })
 
       Twitter.get('followers/ids', {
