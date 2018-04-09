@@ -1,4 +1,4 @@
-export function getCurrenTime() {
+function getCurrentTime() {
   const now = new Date()
   const yyyy = now.getFullYear()
   let dd = now.getDate()
@@ -24,3 +24,5 @@ export function getCurrenTime() {
 
   return `${dd}.${mm}.${yyyy} ${hours}:${mins}`
 }
+
+exports.getCurrentTime = getCurrentTime

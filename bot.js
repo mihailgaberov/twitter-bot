@@ -12,7 +12,7 @@ const sendDirectMessage = function () {
   }
   Twitter.get('search/tweets', params, function (err, data) {
     if (!err) {
-      let content = `== New report (from ${helpers.getCurrenTime()} (${data.statuses.length} tweets)) ==\n`
+      let content = `== New report (from ${helpers.getCurrentTime()} (${data.statuses.length} tweets)) ==\n`
 
       data.statuses.forEach((status) => {
         content += `--- New Tweet:\n
