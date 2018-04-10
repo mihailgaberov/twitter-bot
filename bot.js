@@ -35,7 +35,7 @@ const sendDirectMessage = function () {
                 'type': 'message_create',
                 'message_create': {
                   'target': {
-                    'recipient_id': 390602997
+                    'recipient_id': id
                   },
                   'message_data': {
                     'text': content,
