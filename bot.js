@@ -6,7 +6,7 @@ const Twitter = new Twit(config)
 
 const sendDirectMessage = function () {
   const params = {
-    q: '#js, #javascript, #JavaScript, #JS, #Javascript, #react, #reactjs, #nodejs, #Nodejs',
+    q: '#js, #javascript, #JavaScript, #JS, #Javascript, #react, #reactjs, #nodejs, #Nodejs, -filter:retweets',
     result_type: 'recent',
     lang: 'en'
   }
@@ -35,7 +35,7 @@ const sendDirectMessage = function () {
                 'type': 'message_create',
                 'message_create': {
                   'target': {
-                    'recipient_id': id
+                    'recipient_id': 390602997
                   },
                   'message_data': {
                     'text': content,
