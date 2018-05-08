@@ -6,7 +6,7 @@ const Twitter = new Twit(config)
 
 const sendDirectMessage = function () {
   const params = {
-    q: '#js, #javascript, #JavaScript, #JS, #Javascript, #react, #reactjs, #nodejs, #Nodejs, -filter:retweets',
+    q: '#js OR #JavaScript OR #react OR #reactjs OR #nodejs OR #Nodejs, -filter:retweets',
     result_type: 'recent',
     lang: 'en'
   }
