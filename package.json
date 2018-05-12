@@ -1,6 +1,6 @@
 {
   "name": "herrklinkerhofen",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "A twitter bot that serves as notifier for the recent #js #javascript #nodejs #reactjs news.",
   "main": "bot.js",
   "scripts": {
