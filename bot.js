@@ -1,10 +1,13 @@
 const Twit = require('twit')
 const config = require('./config')
 const helpers = require('./helpers')
+const db = require('./db/tweets.controller')
 
-const Twitter = new Twit(config)
+db.saveTweets()
 
-const sendDirectMessage = function () {
+// const Twitter = new Twit(config)
+
+/*const sendDirectMessage = function () {
   const params = {
     q: '#js OR #JavaScript OR #react OR #reactjs OR #nodejs OR #Nodejs, -filter:retweets',
     result_type: 'recent',
@@ -15,6 +18,7 @@ const sendDirectMessage = function () {
       let content = `== New report (from ${helpers.getCurrentTime()} (${data.statuses.length} tweets)) ==\n`
 
       data.statuses.forEach((status) => {
+        console.log('id_str: ', status.id_str)
         content += `--- New Tweet:\n
               Status text: ${status.text} \n
               By: ${status.user.name}\n\n`
@@ -59,6 +63,6 @@ const sendDirectMessage = function () {
       console.log('Something went wrong while searching.')
     }
   })
-}
+}*/
 
-sendDirectMessage()
+//sendDirectMessage()
