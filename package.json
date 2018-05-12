@@ -24,6 +24,7 @@
   "homepage": "https://github.com/mihailgaberov/twitter-bot#readme",
   "devDependencies": {
     "dotenv": "^5.0.1",
+    "mongoose": "^5.1.0",
     "twit": "^2.2.9"
   }
 }
