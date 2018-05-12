@@ -16,4 +16,4 @@ const tweetSchema = new Schema({
     required: true
   }
 })
-module.exports = mongoose.model('Tweet', tweetSchema)
+mongoose.model('Tweet', tweetSchema)

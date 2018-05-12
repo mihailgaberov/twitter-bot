@@ -1,9 +1,14 @@
 const Twit = require('twit')
 const config = require('./config')
 const helpers = require('./helpers')
+
+require('./db/db')
 const db = require('./db/tweets.controller')
 
-db.saveTweets()
+db.saveTweet()
+db.fetchTweets().then((arrRecordedTweets) => {
+  console.log('arrRecordedTweets: ', arrRecordedTweets)
+})
 
 // const Twitter = new Twit(config)
 

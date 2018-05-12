@@ -4,7 +4,6 @@ const dbURI = 'mongodb://127.0.0.1/twitter-bot-db'
 const db = mongoose.connection
 
 mongoose.connect(dbURI)
-mongoose.Promise = global.Promise
 
 db.on('connected', function () {
   console.log('Mongoose connected to ' + dbURI)

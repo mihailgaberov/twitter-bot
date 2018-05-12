@@ -1,13 +1,22 @@
-const Tweet = require('./tweets.model')
+const mongoose = require('mongoose');
+const Tweet = mongoose.model('Tweet')
 
-module.exports.saveTweets = function() {
+module.exports.saveTweet = function () {
   const tweet = new Tweet({
-    id_str: '12312312312',
-    status: 'test status a lanalabalbala bala.',
+    id_str: '333344444444444',
+    status: 'Bla bla bla.',
     author: 'Mihail Gaberov'
   })
 
   tweet.save()
-    .then(() => console.log('>>> success'))
-    .catch((err)=> console.log('>>>error: ', err))
+    .then((tweet) => console.log('Tweet recorded: ', tweet))
+    .catch((err) => console.log('Tweet recording failed: ', err))
+}
+
+module.exports.fetchTweets = function () {
+  return Tweet.find({})
+    .then((tweets) => {
+      return tweets
+    })
+    .catch((err) => console.log('Fetching tweets failed: ', err))
 }
