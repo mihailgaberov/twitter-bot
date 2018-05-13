@@ -24,3 +24,18 @@ module.exports.getCurrentTime = function() {
 
   return `${dd}.${mm}.${yyyy} ${hours}:${mins}`
 }
+
+module.exports.composeContent = function (tweets) {
+  if (tweets.length === 0)
+    return `--- Nothing new this time (${this.getCurrentTime()}).`
+
+  let content = `== New report (from ${this.getCurrentTime()} (${tweets.length} tweets)) ==\n`
+
+  tweets.forEach((tweet) => {
+    content += `--- New Tweet:\n
+              Status: ${tweet.text} \n
+              By: ${tweet.user.name}\n\n`
+  })
+
+  return content
+}
