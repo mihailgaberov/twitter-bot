@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 let gracefulShutdown
-const dbURI = 'mongodb://127.0.0.1/twitter-bot-db'
+const dbURI = `mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@ds219130.mlab.com:19130/twitter-bot-db`
 const db = mongoose.connection
 
 mongoose.connect(dbURI)
