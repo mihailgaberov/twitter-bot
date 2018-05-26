@@ -14,6 +14,10 @@ const tweetSchema = new Schema({
   author: {
     type: String,
     required: true
+  },
+  created_at: {
+    type: String,
+    required: true
   }
 })
 mongoose.model('Tweet', tweetSchema)

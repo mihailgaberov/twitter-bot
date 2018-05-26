@@ -9,11 +9,12 @@ const fetchTweets = function () {
     .catch((err) => console.log('Fetching tweets failed: ', err))
 }
 
-const recordTweet = function ({ id_str, text, user }) {
+const recordTweet = function ({ id_str, text, user, created_at }) {
   const tweet = new Tweet({
     id_str: id_str,
     status: text,
-    author: user.name
+    author: user.name,
+    created_at: created_at
   })
 
   tweet.save()
