@@ -34,7 +34,8 @@ module.exports.composeContent = function (tweets) {
   tweets.forEach((tweet) => {
     content += `--- New Tweet:\n
               Status: ${tweet.text} \n
-              By: ${tweet.user.name}\n\n`
+              By: ${tweet.user.name}\n
+              From: ${tweet.created_at}\n\n`
   })
 
   return content
