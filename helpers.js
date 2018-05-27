@@ -1,5 +1,5 @@
-module.exports.getCurrentTime = function() {
-  const now = new Date()
+module.exports.getTime = function(dateString = '') {
+  const now = dateString ? new Date(dateString) : new Date() // TODO: to check if it will work only with new Date(dateString)
   const yyyy = now.getFullYear()
   let dd = now.getDate()
   let mm = now.getMonth() + 1
@@ -27,16 +27,17 @@ module.exports.getCurrentTime = function() {
 
 module.exports.composeContent = function (tweets) {
   if (tweets.length === 0)
-    return `--- Nothing new this time (${this.getCurrentTime()}).`
+    return `--- Nothing new this time (${this.getTime()}).`
 
-  let content = `== New report (from ${this.getCurrentTime()} (${tweets.length} tweets)) ==\n`
+  let content = `== New report (from ${this.getTime()} (${tweets.length} tweets)):\n\n`
 
   tweets.forEach((tweet) => {
-    content += `*** New Tweet*******\n
+    const from = this.getTime(tweet.created_at)
+
+    content += `********* New Tweet *********\n
               Status: ${tweet.text} \n
               By: ${tweet.user.name}\n
-              From: ${tweet.created_at}\n\n`
+              From: ${from}\n\n`
   })
-
   return content
 }

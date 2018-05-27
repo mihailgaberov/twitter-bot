@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Tweet = mongoose.model('Tweet')
+const helpers = require('../helpers');
 
 const fetchTweets = function () {
   return Tweet.find({})
@@ -14,7 +15,7 @@ const recordTweet = function ({ id_str, text, user, created_at }) {
     id_str: id_str,
     status: text,
     author: user.name,
-    created_at: created_at
+    created_at: helpers.getTime(created_at)
   })
 
   tweet.save()

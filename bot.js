@@ -20,40 +20,41 @@ const sendDirectMessage = function () {
       db.getUniqueTweets(data.statuses).then((tweets) => {
         content = helpers.composeContent(tweets)
         db.recordUniqueTweets(tweets)
-      })
 
-      Twitter.get('followers/ids', {
-        user_id: 982290988562608129,
-        screen_name: 'herrklinkerhof3'
-      }, (err, response) => {
-        if (err) {
-          console.log('Something went wrong while getting followers. Error: ', err)
-        }
-
-        if (response) {
-          response.ids.forEach((id) => {
-            Twitter.post('direct_messages/events/new', {
-              event: {
-                'type': 'message_create',
-                'message_create': {
-                  'target': {
-                    'recipient_id': id
-                  },
-                  'message_data': {
-                    'text': content,
+        Twitter.get('followers/ids', {
+          user_id: 982290988562608129,
+          screen_name: 'herrklinkerhof3'
+        }, (err, response) => {
+          if (err) {
+            console.log('Something went wrong while getting followers. Error: ', err)
+          }
+  
+          if (response) {
+            response.ids.forEach((id) => {
+              Twitter.post('direct_messages/events/new', {
+                event: {
+                  'type': 'message_create',
+                  'message_create': {
+                    'target': {
+                      'recipient_id': id
+                    },
+                    'message_data': {
+                      'text': content,
+                    }
                   }
                 }
-              }
-            }, (err, response) => {
-              if (response) {
-                console.log('Message sent. Response: ', response)
-              }
-              if (err) {
-                console.log('Something went wrong while sending message. Error: ', err)
-              }
+              }, (err, response) => {
+                if (err) {
+                  console.log('Something went wrong while sending message. Error: ', err)
+                } else {
+                  if (response) {
+                    console.log('Message sent. Response: ', response)
+                  }
+                }
+              })
             })
-          })
-        }
+          }
+        })
       })
     } else {
       console.log('Something went wrong while searching.')
