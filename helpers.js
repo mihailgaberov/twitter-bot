@@ -32,7 +32,7 @@ module.exports.composeContent = function (tweets) {
   let content = `== New report (from ${this.getCurrentTime()} (${tweets.length} tweets)) ==\n`
 
   tweets.forEach((tweet) => {
-    content += `--- New Tweet:\n
+    content += `*** New Tweet*******\n
               Status: ${tweet.text} \n
               By: ${tweet.user.name}\n
               From: ${tweet.created_at}\n\n`
