@@ -1,5 +1,5 @@
 module.exports.getTime = function(dateString = '') {
-  const now = new Date(dateString)
+  const now = dateString ? new Date(dateString) : new Date()
   const yyyy = now.getFullYear()
   let dd = now.getDate()
   let mm = now.getMonth() + 1
