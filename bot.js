@@ -17,7 +17,7 @@ const sendDirectMessage = function () {
   Twitter.get('search/tweets', params, function (err, data) {
     if (!err) {
       db.getUniqueTweets(data.statuses).then((tweets) => {
-        let content = helpers.composeContent(tweets)
+        const content = helpers.composeContent(tweets)
         db.recordUniqueTweets(tweets)
 
         Twitter.get('followers/ids', {
