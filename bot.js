@@ -9,7 +9,7 @@ const Twitter = new Twit(config)
 
 const sendDirectMessage = function () {
   const params = {
-    q: '#js OR #JavaScript OR #react OR #reactjs OR #nodejs OR #Nodejs, -filter:retweets',
+    q: '#js OR #JavaScript OR #react OR #reactjs OR #nodejs OR #Nodejs OR #GraphQL, -filter:retweets',
     result_type: 'recent',
     lang: 'en'
   }
