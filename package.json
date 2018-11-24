@@ -22,9 +22,10 @@
     "url": "https://github.com/mihailgaberov/twitter-bot/issues"
   },
   "homepage": "https://github.com/mihailgaberov/twitter-bot#readme",
-  "devDependencies": {
-    "dotenv": "^5.0.1",
-    "mongoose": "^5.0.17",
-    "twit": "^2.2.9"
+  "devDependencies": {},
+  "dependencies": {
+    "dotenv": "^6.1.0",
+    "mongoose": "^5.3.13",
+    "twit": "^2.2.11"
   }
 }
